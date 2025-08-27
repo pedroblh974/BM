@@ -1,0 +1,15 @@
+{
+  "name": "تسيير تلاميذ الفيزياء - الأستاذ ولد يوسف",
+  "short_name": "تسيير التلاميذ",
+  "lang": "ar-DZ",
+  "dir": "rtl",
+  "start_url": "/workspace/pwa-oyc/index.html",
+  "display": "standalone",
+  "background_color": "#0b1020",
+  "theme_color": "#0ea5e9",
+  "icons": [
+    { "src": "/workspace/pwa-oyc/assets/icons/icon-192.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose":"any" },
+    { "src": "/workspace/pwa-oyc/assets/icons/icon-512.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose":"any maskable" }
+  ]
+}
+
