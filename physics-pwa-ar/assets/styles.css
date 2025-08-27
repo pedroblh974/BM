@@ -1,0 +1,158 @@
+:root {
+  --background: #0b0f13;
+  --surface: #0f1720;
+  --text: #e6edf3;
+  --muted: #93a4b3;
+  --primary: #0ea5e9;
+  --primary-contrast: #001219;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --card: #111827;
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --background: #f7fafc;
+  --surface: #ffffff;
+  --text: #0f1720;
+  --muted: #64748b;
+  --primary: #0ea5e9;
+  --primary-contrast: #f0f9ff;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #d97706;
+  --card: #ffffff;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Naskh Arabic UI, Noto Sans Arabic, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: 16px;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--surface);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-emoji { font-size: 20px; }
+.brand-title { font-size: 16px; margin: 0; }
+.header-actions { display: flex; align-items: center; gap: 8px; }
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  padding: 8px;
+  background: var(--surface);
+  position: sticky;
+  top: 56px;
+  z-index: 9;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.tab {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: transparent;
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 8px;
+  font-size: 14px;
+}
+.tab.active { background: var(--primary); color: var(--primary-contrast); border-color: transparent; }
+
+.grid {
+  display: grid;
+  gap: 12px;
+}
+.grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+.card {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 14px;
+}
+.card h3 { margin-top: 0; font-size: 16px; }
+.big { font-size: 24px; font-weight: 700; }
+
+.btn {
+  appearance: none;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn.primary { background: var(--primary); color: var(--primary-contrast); }
+.btn.secondary { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text); }
+.btn.danger { background: var(--danger); color: #fff; }
+.btn.icon { background: transparent; border: 1px solid rgba(255,255,255,0.15); }
+.btn[disabled] { opacity: .5; cursor: not-allowed; }
+
+.input, select, .select, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  font-size: 14px;
+}
+label { display: block; font-size: 13px; color: var(--muted); margin: 6px 2px; }
+.row { display: grid; gap: 10px; }
+.row.cols-2 { grid-template-columns: 1fr 1fr; }
+.row.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+.inline { display: inline-flex; gap: 8px; align-items: center; }
+.muted { color: var(--muted); }
+.price { font-weight: 700; color: var(--primary); }
+.status { padding: 2px 8px; border-radius: 999px; font-size: 12px; }
+.status.paid { background: rgba(34,197,94,.15); color: var(--success); }
+.status.unpaid { background: rgba(239,68,68,.15); color: var(--danger); }
+
+.list { display: grid; gap: 8px; }
+.list-item { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; padding: 10px; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; background: var(--surface); }
+.list-item .title { font-weight: 600; }
+
+.app-footer { text-align: center; color: var(--muted); padding: 24px 12px; }
+
+.toast {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 16px;
+  z-index: 100;
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 12px 14px;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .tabs { grid-template-columns: repeat(5, max-content); justify-content: center; gap: 10px; }
+  .container { padding: 20px; }
+}
+
