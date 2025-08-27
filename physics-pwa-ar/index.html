@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0ea5e9">
+    <title>منصة الأستاذ ولد يوسف - الفيزياء</title>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/icons/icon-192.svg">
+    <link rel="apple-touch-icon" href="/icons/icon-192.svg">
+    <link rel="stylesheet" href="/assets/styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-emoji">⚛️</span>
+        <h1 class="brand-title">منصة الأستاذ ولد يوسف</h1>
+      </div>
+      <div class="header-actions">
+        <button id="installBtn" class="btn secondary" hidden>تنصيب التطبيق</button>
+        <button id="themeToggle" class="btn icon" aria-label="تبديل الوضع">🌙</button>
+      </div>
+    </header>
+
+    <nav class="tabs" aria-label="التنقل">
+      <button class="tab active" data-route="#/dashboard">لوحة التحكم</button>
+      <button class="tab" data-route="#/register">تسجيل</button>
+      <button class="tab" data-route="#/students">الطلاب</button>
+      <button class="tab" data-route="#/attendance">الحضور</button>
+      <button class="tab" data-route="#/reports">التقارير</button>
+    </nav>
+
+    <main id="app" class="container" tabindex="-1" aria-live="polite"></main>
+
+    <footer class="app-footer">
+      <small>© <span id="year"></span> الأستاذ ولد يوسف — الفيزياء</small>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <script type="module" src="/app/app.js"></script>
+    <noscript>الرجاء تفعيل الجافاسكريبت لاستخدام التطبيق.</noscript>
+  </body>
+  </html>
+
