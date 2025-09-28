@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="414" height="896" viewBox="0 0 414 896">
+  <rect width="414" height="896" fill="#0b1020"/>
+  <rect x="0" y="0" width="414" height="56" fill="#101935"/>
+  <text x="360" y="36" fill="#DBE6FF" font-family="Cairo" font-size="18" text-anchor="end">التقارير</text>
+  <rect x="12" y="72" width="390" height="120" rx="16" fill="#111832" stroke="#1e2a57"/>
+  <text x="360" y="96" fill="#9FB0D8" font-family="Cairo" font-size="14" text-anchor="end">دخل الشهر</text>
+  <text x="360" y="120" fill="#DBE6FF" font-family="Cairo" font-size="18" text-anchor="end">0 / 0 دج</text>
+  <rect x="12" y="204" width="390" height="200" rx="16" fill="#111832" stroke="#1e2a57"/>
+</svg>

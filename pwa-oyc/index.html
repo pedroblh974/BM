@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0ea5e9">
+    <title>تسيير تلاميذ الفيزياء - الأستاذ ولد يوسف</title>
+    <link rel="manifest" href="/workspace/pwa-oyc/manifest.webmanifest">
+    <link rel="icon" href="/workspace/pwa-oyc/assets/icons/icon-192.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/workspace/pwa-oyc/assets/icons/icon-192.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/workspace/pwa-oyc/app.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="app-title">الأستاذ ولد يوسف</div>
+        <div class="header-actions">
+            <button id="installBtn" class="btn ghost" hidden>تثبيت التطبيق</button>
+            <button id="themeToggle" class="btn ghost" aria-label="تبديل النمط">🌙</button>
+        </div>
+    </header>
+
+    <nav class="tabs">
+        <button class="tab active" data-tab="dashboard">لوحة الأستاذ</button>
+        <button class="tab" data-tab="register">تسجيل تلميذ</button>
+        <button class="tab" data-tab="students">قائمة التلاميذ</button>
+        <button class="tab" data-tab="attendance">الحضور</button>
+        <button class="tab" data-tab="payments">المدفوعات</button>
+        <button class="tab" data-tab="reports">التقارير</button>
+        <button class="tab" data-tab="settings">الإعدادات</button>
+    </nav>
+
+    <main class="view-container">
+        <!-- Dashboard -->
+        <section id="view-dashboard" class="view active">
+            <div class="card">
+                <div class="card-title">إحصائيات عامة</div>
+                <div id="stats" class="stats-grid"></div>
+            </div>
+            <div class="card">
+                <div class="card-title">بحث</div>
+                <input id="searchInput" class="input" placeholder="ابحث بالاسم أو الهاتف" type="search">
+                <div id="searchResults" class="list"></div>
+            </div>
+            <div class="card warn" id="unpaidNotice" hidden>
+                <div class="card-title">تنبيه</div>
+                <p>هناك تلاميذ غير مسددين هذا الشهر.</p>
+                <button id="goToUnpaid" class="btn">عرض</button>
+            </div>
+        </section>
+
+        <!-- Register -->
+        <section id="view-register" class="view">
+            <form id="registerForm" class="form">
+                <div class="card">
+                    <div class="card-title">تسجيل تلميذ جديد</div>
+                    <label class="label">الاسم واللقب</label>
+                    <input id="studentName" class="input" required placeholder="مثال: أحمد بن يوسف">
+
+                    <label class="label">رقم الهاتف</label>
+                    <input id="studentPhone" class="input" required placeholder="مثال: 06xxxxxxxx">
+                    <small class="hint">صيغة مقبولة: 05/06/07xxxxxxxx أو ‎+2135/6/7xxxxxxxx</small>
+
+                    <label class="label">هاتف الولي (اختياري)</label>
+                    <input id="guardianPhone" class="input" placeholder="مثال: 07xxxxxxxx">
+
+                    <label class="label">المجموعة</label>
+                    <select id="groupSelect" class="input">
+                        <option value="main">المجموعة الرئيسية — 2500 دج / شهر (25+)</option>
+                        <option value="mini1">مجموعة مصغرة 1 — 8000 دج / شهر (11)</option>
+                        <option value="mini2">مجموعة مصغرة 2 — 8000 دج / شهر (11)</option>
+                        <option value="mini3">مجموعة مصغرة 3 — 8000 دج / شهر (11)</option>
+                        <option value="mini4">مجموعة مصغرة 4 — 8000 دج / شهر (11)</option>
+                    </select>
+                    <div id="groupCapacityNote" class="note"></div>
+
+                    <div class="form-row">
+                        <label class="label">بداية الاشتراك</label>
+                        <input id="startMonth" class="input" type="month">
+                        <label class="checkbox">
+                            <input id="markPaidOnRegister" type="checkbox"> تسديد هذا الشهر
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn primary full">تسجيل</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Students -->
+        <section id="view-students" class="view">
+            <div class="card">
+                <div class="card-title">التلاميذ</div>
+                <div id="studentsList" class="list"></div>
+            </div>
+        </section>
+
+        <!-- Attendance -->
+        <section id="view-attendance" class="view">
+            <div class="card">
+                <div class="form-row">
+                    <input id="attendanceDate" type="date" class="input">
+                    <select id="attendanceGroup" class="input">
+                        <option value="all">كل المجموعات</option>
+                        <option value="main">الرئيسية</option>
+                        <option value="mini1">مصغرة 1</option>
+                        <option value="mini2">مصغرة 2</option>
+                        <option value="mini3">مصغرة 3</option>
+                        <option value="mini4">مصغرة 4</option>
+                    </select>
+                    <button id="exportCsv" class="btn">تصدير CSV</button>
+                </div>
+                <div id="attendanceList" class="list"></div>
+            </div>
+        </section>
+
+        <!-- Payments -->
+        <section id="view-payments" class="view">
+            <div class="card">
+                <div class="form-row">
+                    <input id="paymentsMonth" type="month" class="input">
+                    <select id="paymentsGroup" class="input">
+                        <option value="all">كل المجموعات</option>
+                        <option value="main">الرئيسية</option>
+                        <option value="mini1">مصغرة 1</option>
+                        <option value="mini2">مصغرة 2</option>
+                        <option value="mini3">مصغرة 3</option>
+                        <option value="mini4">مصغرة 4</option>
+                    </select>
+                </div>
+                <div id="paymentsList" class="list"></div>
+            </div>
+        </section>
+
+        <!-- Reports -->
+        <section id="view-reports" class="view">
+            <div class="card">
+                <div class="card-title">تقارير مالية</div>
+                <div class="form-row">
+                    <input id="reportMonth" type="month" class="input">
+                    <button id="refreshReports" class="btn">تحديث</button>
+                </div>
+                <div id="reportsContent" class="list"></div>
+            </div>
+        </section>
+
+        <!-- Settings -->
+        <section id="view-settings" class="view">
+            <div class="card">
+                <div class="card-title">الإعدادات</div>
+                <label class="checkbox">
+                    <input id="notifyToggle" type="checkbox"> تفعيل الإشعارات المحلية
+                </label>
+                <div class="note">الإشعارات تعمل بدون إنترنت لتذكيرك بغير المسددين.</div>
+                <button id="backupBtn" class="btn">نسخ احتياطي للبيانات</button>
+                <input id="restoreInput" type="file" accept="application/json" hidden>
+                <button id="restoreBtn" class="btn">استرجاع بيانات</button>
+            </div>
+            <footer class="footer">نسخة محلية — يعمل دون اتصال. آخر تحديث <span id="buildTime"></span></footer>
+        </section>
+    </main>
+
+    <template id="studentItemTmpl">
+        <div class="item">
+            <div class="item-main">
+                <div class="title"></div>
+                <div class="subtitle"></div>
+            </div>
+            <div class="item-actions"></div>
+        </div>
+    </template>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="/workspace/pwa-oyc/app.js" defer></script>
+</body>
+</html>
+

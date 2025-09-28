@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="414" height="896" viewBox="0 0 414 896">
+  <rect width="414" height="896" fill="#0b1020"/>
+  <rect x="0" y="0" width="414" height="56" fill="#101935"/>
+  <text x="360" y="36" fill="#DBE6FF" font-family="Cairo" font-size="18" text-anchor="end">تسجيل تلميذ</text>
+  <rect x="12" y="72" width="390" height="600" rx="16" fill="#111832" stroke="#1e2a57"/>
+  <text x="378" y="96" fill="#9FB0D8" font-family="Cairo" font-size="14" text-anchor="end">الاسم واللقب</text>
+  <rect x="24" y="108" width="366" height="40" rx="10" fill="#162041"/>
+  <text x="378" y="168" fill="#9FB0D8" font-family="Cairo" font-size="14" text-anchor="end">رقم الهاتف</text>
+  <rect x="24" y="180" width="366" height="40" rx="10" fill="#162041"/>
+  <text x="378" y="240" fill="#9FB0D8" font-family="Cairo" font-size="14" text-anchor="end">المجموعة والسعر</text>
+  <rect x="24" y="252" width="366" height="40" rx="10" fill="#162041"/>
+  <rect x="24" y="324" width="366" height="48" rx="12" fill="#0ea5e9"/>
+  <text x="207" y="354" fill="#ffffff" font-family="Cairo" font-size="16" text-anchor="middle">تسجيل</text>
+</svg>
